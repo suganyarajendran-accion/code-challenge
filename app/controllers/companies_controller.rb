@@ -32,6 +32,14 @@ class CompaniesController < ApplicationController
     end
   end  
 
+  def destroy
+    if @company.destroy
+      redirect_to companies_path, notice: "Deleted!"
+    else
+      render :show
+    end
+  end
+
   private
 
   def company_params
