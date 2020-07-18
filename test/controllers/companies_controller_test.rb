@@ -60,4 +60,14 @@ class CompaniesControllerTest < ApplicationSystemTestCase
     assert_equal "28173", last_company.zip_code
   end
 
+  test "Destroy" do
+    visit company_path(@company)
+    page.accept_confirm do
+      click_link "Delete" do
+        assert_difference('Company.count', -1)
+      end
+    end
+    assert_text "Deleted!"
+  end
+
 end
